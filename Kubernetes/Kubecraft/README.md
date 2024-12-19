@@ -21,6 +21,9 @@ brew install k9s
 - Get used to using the CLI
 - Generate files for Kubernetes and deploy these. This makes it easy for you to get used to GitOps. Don't log into servers and configure them on your own. Write scripts and make them auto deploy. You can also run automated tests against them. This makes it easy to check if everything works.
 - Get used to using the Kubernetes help (man) pages. During Kubernetes exams, you can quickly review the built-in docs. This saves you a lot of time.
+- First search the built-in Kubernetes help pages. Then search the online Kubernetes docs. Finally, if nothing helps, use google. Do it in that order. It helps with the limited time on certifications.
+
+- When pasting something into vim with bad formatting, enter command `:set paste` into vim.
 
 ## Fundamentals:
 
@@ -73,3 +76,11 @@ Expose a port of a deployment:
 - All containers inside a pod can communicate with each other via localhost.
 - When using default settings, all pods can communicate with each other via ips.
 - Each pod has an own ip address. To see the IP, use `kubectl get pods -o wide`.
+
+## Storage
+
+### Ephemeral Storage
+- Gets deleted after the pod stops.
+
+### Persistant Storage
+- Does not get deleted after the pod stops.
