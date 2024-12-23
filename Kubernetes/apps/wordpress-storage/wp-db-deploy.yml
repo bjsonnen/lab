@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: wp-db-deploy
+  name: wp-db-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wp-db-deploy
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: wp-db-deploy
+    spec:
+      containers:
+      - image: mysql
+        name: mysql
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: Password123!
+        - name: MYSQL_DATABASE
+          value: wp
+        resources: {}
+        volumeMounts:
+        - name: vol-db
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: vol-db
+        hostPath:
+          path: /Users/bjornsonnen/Documents/Open-Source/lab/Kubernetes/apps/wordpress-storage/db
+status: {}

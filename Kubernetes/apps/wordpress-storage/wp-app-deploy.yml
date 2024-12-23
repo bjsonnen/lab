@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: wp-app-deploy
+  name: wp-app-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wp-app-deploy
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: wp-app-deploy
+    spec:
+      containers:
+      - image: wordpress
+        name: wordpress
+        resources: {}
+        volumeMounts:
+        - name: vol
+          mountPath: /var/www/html
+      volumes:
+      - name: vol
+        hostPath:
+          path: /Users/bjornsonnen/Documents/Open-Source/lab/Kubernetes/apps/wordpress-storage/data
+status: {}
