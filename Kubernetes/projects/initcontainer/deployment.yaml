@@ -21,4 +21,18 @@ spec:
       - image: php:8.2.27-apache
         name: php
         resources: {}
+        volumeMounts:
+        - mountPath: /var/www/html
+          name: php-volume
+      initContainers:
+      - name: php-init
+        image: init-git-curl:1.0
+        volumeMounts:
+        - mountPath: /var/www/html
+          name: php-volume
+        command: ['sh', '-c', 'rm -rf /var/www/html/* && git clone https://github.com/ADi7YA26/Student-Dashboard.git /var/www/html/']
+      volumes:
+      - name: php-volume
+        persistentVolumeClaim:
+          claimName: php-volume-pvc
 status: {}
